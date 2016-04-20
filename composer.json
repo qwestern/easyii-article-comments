@@ -1,0 +1,12 @@
+{
+  "name": "qwestern/easyii-article-comments",
+  "type": "yii2-extension",
+  "requires" :{
+    "noumo/easyii": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "qwestern\\easyii\\article\\comments\\": "src/"
+    }
+  }
+}
