@@ -17,4 +17,9 @@ class ArticleItem extends Item
     {
         return $this->hasMany(ArticleComment::className(), ['article_item_id' => 'item_id']);
     }
+
+    public function getArticleCommentsCount()
+    {
+        return $this->hasOne(ArticleCommentCount::className(), ['article_item_id' => 'item_id']);
+    }
 }
