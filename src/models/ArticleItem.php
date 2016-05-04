@@ -1,11 +1,12 @@
 <?php
 namespace qwestern\easyii\article\comments\models;
 
-use yii\easyii\modules\article\models\Item;
 
 /*
  *  @property ArticleComment[] $articleComments
  */
+
+use app\extensions\articles\models\Item;
 
 class ArticleItem extends Item
 {
