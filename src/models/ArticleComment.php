@@ -54,7 +54,6 @@ class ArticleComment extends ActiveRecord
         return [
             [
                 'class' => TimestampBehavior::className(),
-                'value' => new Expression('NOW()')
             ]
         ];
     }
