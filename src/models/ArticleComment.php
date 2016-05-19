@@ -2,12 +2,12 @@
 
 namespace qwestern\easyii\article\comments\models;
 
+use app\extensions\articles\models\Item;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\easyii\modules\article\api\Article;
-use yii\easyii\modules\article\models\Item;
 
 /**
  * This is the model class for table "easyii_lender_comment".
@@ -79,6 +79,6 @@ class ArticleComment extends ActiveRecord
      */
     public function getArticleItem()
     {
-        return $this->hasOne(Item::className(), ['id' => 'article_item_id']);
+        return $this->hasOne(Item::className(), ['item_id' => 'article_item_id']);
     }
 }
