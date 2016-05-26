@@ -2,13 +2,10 @@
 namespace qwestern\easyii\article\comments\controllers;
 
 use qwestern\easyii\article\comments\models\ArticleComment;
-use qwestern\easyii\menu\models\Menu;
-use qwestern\easyii\menu\models\MenuItem;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\db\Expression;
 use yii\easyii\components\Controller;
-use yii\web\NotFoundHttpException;
 
 class AController extends Controller
 {
