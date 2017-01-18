@@ -2,6 +2,7 @@
 
 namespace qwestern\easyii\article\comments\models;
 
+use app\models\User;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -15,6 +16,7 @@ use yii\easyii\modules\article\models\Item;
  * @property string $name
  * @property string $comment
  * @property integer $published
+ * @property integer $created_by
  * @property string $created_at
  * @property string $updated_at
  *
@@ -38,7 +40,7 @@ class ArticleComment extends ActiveRecord
         return [
             [['article_item_id', 'name', 'comment', 'email'], 'required'],
             [['article_item_id'], 'integer'],
-            [['created_at', 'updated_at', 'published'], 'safe'],
+            [['created_at', 'updated_at', 'published', 'created_by'], 'safe'],
             [['email'], 'email'],
             [['name', 'comment'], 'string', 'max' => 255],
         ];
@@ -78,5 +80,13 @@ class ArticleComment extends ActiveRecord
     public function getArticleItem()
     {
         return $this->hasOne(Item::className(), ['item_id' => 'article_item_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSubscriberUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
 }

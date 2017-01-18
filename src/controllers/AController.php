@@ -11,7 +11,7 @@ class AController extends Controller
 {
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider(['query' => ArticleComment::find()->where(['published' => null])->orderBy(['updated_at' => SORT_DESC])]);
+        $dataProvider = new ActiveDataProvider(['query' => ArticleComment::find()->with(['subscriberUser'])->where(['published' => null])->orderBy(['updated_at' => SORT_DESC])]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider

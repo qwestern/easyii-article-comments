@@ -27,6 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'format' => 'raw'
         ],
         'created_at:date',
+        'created_by' => [
+            'label' => 'Created By',
+            'value' => function ($model) {
+                return $model->subscriberUser
+                    ?
+                    'Nick: '.$model->subscriberUser->nickname.'<br>'
+                    :
+                    'ANONYMOUS';
+            },
+            'format' => 'raw'
+        ],
         [
             'label' => 'publish',
             'value' => function ($model) {
