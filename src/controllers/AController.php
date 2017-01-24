@@ -3,6 +3,7 @@ namespace qwestern\easyii\article\comments\controllers;
 
 use app\models\PointDefinition;
 use app\models\UserPointLog;
+use app\services\UserPointLogService;
 use qwestern\easyii\article\comments\models\ArticleComment;
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -28,14 +29,7 @@ class AController extends Controller
 
             $pointDefinitionModel = PointDefinition::find()->byName(PointDefinition::COMMENT_BLOG)->one();
 
-            $pointLog = new UserPointLog([
-                'point_definition_id' => $pointDefinitionModel->id,
-                'table' => ArticleComment::tableName(),
-                'item_id' => $id,
-                'amount' => $pointDefinitionModel->amount,
-                'subscriber_user_id' => $model->created_by
-            ]);
-            $pointLog->save();
+            (new UserPointLogService())->savePointLog($pointDefinitionModel, $model);
         }
         $model->published = new Expression('NOW()');
         $model->save();
